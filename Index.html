@@ -1,1 +1,44 @@
-index.html
+
+
+*lista_musicas.html*
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Músicas</title>
+</head>
+<body>
+    <h1>Músicas</h1>
+    <ul>
+        {% for musica in musicas %}
+            <li>
+                {{ musica[1] }} - {{ musica[2] }}
+                <a href="{{ url_for('download_musica', id=musica[0]) }}">Baixar</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+```
+
+*upload_musica.html*
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload de Música</title>
+</head>
+<body>
+    <h1>Upload de Música</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo"><br><br>
+        <label for="artista">Artista:</label>
+        <input type="text" id="artista" name="artista"><br><br>
+        <label for="arquivo">Arquivo:</label>
+        <input type="file" id="arquivo" name="arquivo"><br><br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+```
